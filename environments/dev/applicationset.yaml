@@ -10,7 +10,7 @@ spec:
       repoURL: https://github.com/myspotontheweb/oci-helm-demo.git
       revision: HEAD
       directories:
-      - path: addons/**/dev
+      - path: apps/**/dev
   template:
     metadata:
       name: {{path[1]}}
