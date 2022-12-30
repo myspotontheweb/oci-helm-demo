@@ -1,0 +1,11 @@
+apiVersion: v2
+name: demo1-dev
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+dependencies:
+- name: demo1
+  version: 1.0.1
+  repository: oci://mocscoil1.azurecr.io/helm
+  alias: demo1
