@@ -15,7 +15,7 @@ helm-deps:
 	helm dependency build apps/prod
 
 helm-login:
-	helm registry login $(HELM_REGISTRY) --username=$(HELM_USER) --password=$(HELM_PASS)
+	@echo $(HELM_PASS) | helm registry login $(HELM_REGISTRY) --username=$(HELM_USER) --password-stdin
 
 helm-package:
 	helm package charts/$(HELM_CHART) --version=$(HELM_VERSION) --app-version=$(HELM_APP_VERSION)
