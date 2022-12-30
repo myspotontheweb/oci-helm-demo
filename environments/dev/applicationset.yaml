@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/myspotontheweb/oci-helm-demo.git
+      revision: HEAD
+      directories:
+      - path: addons/**/dev
+  template:
+    metadata:
+      name: {{path[1]}}
+    spec:
+      project: "dev"
+      source:
+        repoURL: https://github.com/myspotontheweb/oci-helm-demo.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "dev"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
