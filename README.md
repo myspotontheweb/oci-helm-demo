@@ -28,5 +28,5 @@ make helm-login
 Push a chart version
 
 ```
-HELM_VERSION=1.3.0 HELM_APP_VERSION=v1.3 make 
+make HELM_VERSION=1.3.0 HELM_APP_VERSION=v1.3
 ```
